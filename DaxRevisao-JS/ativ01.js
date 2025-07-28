@@ -1,5 +1,4 @@
-var prompt = require('prompt-sync')();
-let numero = Number(prompt("Digite um número: "));
+let numero = 0;
 
     if (numero > 0) {
         console.log("número é positivo."); 
@@ -8,6 +7,5 @@ let numero = Number(prompt("Digite um número: "));
     } else {
         console.log("O número é zero.");
     }
-
 
 
