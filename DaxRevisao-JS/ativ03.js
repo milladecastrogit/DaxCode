@@ -1,7 +1,6 @@
-var prompt = require('prompt-sync')();
-const nota = Number(prompt("Digite a nota do aluno: "));
+let nota = 5.9;
 
-if (nota >= 7) {
+if (nota > 5.9) {
     console.log("Aluno aprovado.");
 } else if (nota >= 5) {
     console.log("Aluno em recuperação.");
