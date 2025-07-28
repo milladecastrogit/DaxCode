@@ -1,9 +1,9 @@
-let nota = 5.9;
+let nota = 4.9;
 
-if (nota > 5.9) {
-    console.log("Aluno aprovado.");
-} else if (nota >= 5) {
-    console.log("Aluno em recuperação.");
+if (nota >= 6) {
+    console.log("Aluno recebeu nota", nota, ". Está aprovado.");
+} else if (nota >= 5 && nota < 6) {
+    console.log("Aluno recebeu nota", nota, ". Está em recuperação.");
 } else {
-    console.log("Aluno reprovado.");
+    console.log("Aluno recebeu nota", nota, ". Está reprovado.");
 }
