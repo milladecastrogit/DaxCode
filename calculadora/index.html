@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "stylesheet" href="./assets/css/style.css"/>
+    <title> Calcuadora de Idade</title>
+</head>
+<body>
+    
+    <section id="Calcuadora">
+        <h1>Calculadora de Idade</h1>
+        <form>
+            <label for="ano">Informe o seu ano de nascimento:</label>
+        </form>
+    </section>
+    
+    
+    
+    
+    <script>
+        const resposta = document.getElementById(" resposta");
+        const anoAtual = new Date().getFullYear();
+        const btnCalcular = document.getElementById("calcular");
+        btnCalcular.addEventListener("click", function (event){
+            event.preventDefault();
+            const inputSeuAno = document.getElementById("ano");
+            const suaIdade = parseInt(inputSeuAno.value);
+            if (!isNaN(suaIdade) || suaIdade > 1900){
+                resposta.innerText = "Sua idade é: " + (anoAtual - suaIdade)
+            } else{
+                resposta.innerText = "Valor Incorreto";
+            }
+        });
+    
+    </script>    
+</body>
+</html>
