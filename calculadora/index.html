@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demonstrações visuais JS</title>
+    <title>Calculadora de Idade</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <section>
-    <h1>Calculadora de idade</h1>
-    <form action="#">
-      <label for="ano">Informe seu ano de nascimento</label>
-      <input type="number" id="ano" placeholder="Ex.: 1995" />
-      <button id="calcular">Calcular</button>
-    </form>
-    <p id="resposta"> </p>
-    <img src="./assets/images/logo-projeto.png" alt="logo do projeto">
-    </section>
-    
-  </body>
-</html>
-    
-    
-    
-    
-    <script>
+</head>
+<body>
+    <div class="container">
+        <section class="calculator-box">
+            <h1>Calculadora de Idade</h1>
+            
+            <!-- Formulário onde o usuário vai digitar o ano de nascimento -->
+            <form action="#" id="form-calculadora">
+                <label for="ano">Informe seu ano de nascimento</label>
+                <!-- Campo para o usuário digitar o ano -->
+                <input type="number" id="ano" placeholder="Ex.: 1995" />
+                <!-- Botão que vai acionar o cálculo -->
+                <button type="button" id="calcular">Calcular</button>
+            </form>
 
+            <!-- Aqui vai aparecer a resposta da calculadora -->
+            <p id="resposta"></p>
+
+            <!-- Apenas um detalhe visual: a logo do projeto -->
+            <img src="./assets/images/logo-projeto.png" alt="logo do projeto" class="logo">
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; Desenvolvido por Camila Paranhos</p>
+    </footer>
+
+    <script>
+        // Pegando os elementos do HTML para manipular depois
         let btn = document.getElementById("calcular");
         let anoNascimento = document.getElementById("ano");
         let resposta = document.getElementById("resposta");
+
+        // Pegando o ano atual do sistema
         let anoAtual = new Date().getFullYear();
         let idade = 0;
 
-        function calcularIdade(anoNascimento){
-        anoNascimento = Number(anoNascimento.value)
-        if(anoNascimento === 0 ||isNaN(anoNascimento) || anoNascimento > anoAtual || anoNascimento < 1900){
-        resposta.textContent = "Por favor, insira um ano válido.";
-      }
-        else{
-        idade = anoAtual-anoNascimento
-        resposta.textContent = "Você tem " + idade + " anos.";
+        // Função que faz o cálculo da idade
+        function calcularIdade(anoNascimento) {
+            anoNascimento = Number(anoNascimento.value);
+
+            // Aqui fazemos as validações: se o campo está vazio, se não é número
+            // ou se o ano digitado não faz sentido (futuro ou muito antigo)
+            if (anoNascimento === 0 || isNaN(anoNascimento) || anoNascimento > anoAtual || anoNascimento < 1900) {
+                resposta.textContent = "Por favor, insira um ano válido.";
+                resposta.style.color = "#ff6b6b"; // mensagem em vermelho
+            } else {
+                // Se tudo estiver certo, calculamos a idade
+                idade = anoAtual - anoNascimento;
+                resposta.textContent = "Você tem " + idade + " anos.";
+                resposta.style.color = "#4ecdc4"; // mensagem em verde
+            }
         }
-     }
-          btn.addEventListener("click",function(){
-          calcularIdade(anoNascimento)
-    })
 
+        // Evento: quando o usuário clicar no botão "Calcular"
+        btn.addEventListener("click", function(e) {
+            e.preventDefault(); // impede que o formulário recarregue a página
+            calcularIdade(anoNascimento);
+        });
 
-    </script>    
-</body>
-<footer>
-    <p>&Desenvolvido por Camila Paranhos</p>
-</footer>
-</html>
-    
-    
-    
-    <script>
-        const resposta = document.getElementById(" resposta");
-        const anoAtual = new Date().getFullYear();
-        const btnCalcular = document.getElementById("calcular");
-        btnCalcular.addEventListener("click", function (event){
-            event.preventDefault();
-            const inputSeuAno = document.getElementById("ano");
-            const suaIdade = parseInt(inputSeuAno.value);
-            if (!isNaN(suaIdade) || suaIdade > 1900){
-                resposta.innerText = "Sua idade é: " + (anoAtual - suaIdade)
-            } else{
-                resposta.innerText = "Valor Incorreto";
+        // Evento: quando o usuário apertar "Enter" dentro do campo de texto
+        anoNascimento.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                calcularIdade(anoNascimento);
             }
         });
-    
-    </script>    
+    </script>
 </body>
-
 </html>
+

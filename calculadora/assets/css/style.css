@@ -1,9 +1,16 @@
+/* Reset básico para garantir consistência entre navegadores:
+   remove margens, espaçamentos e define o modelo de caixa */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilo geral do corpo da página:
+   - Fundo com gif animado
+   - Texto branco para contraste
+   - Uso de flexbox para centralizar os conteúdos
+   - Altura mínima da tela inteira */
 body {
     background-image: url(../images/matrix-background.gif);
     background-repeat: no-repeat;
@@ -20,7 +27,9 @@ body {
     position: relative;
 }
 
-/* Overlay escuro para melhorar a leitura */
+/* Camada de sobreposição escura:
+   aplicada por pseudo-elemento ::before para melhorar a legibilidade
+   dos textos sobre o fundo animado */
 body::before {
     content: '';
     position: fixed;
@@ -29,9 +38,11 @@ body::before {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    z-index: -1;
+    z-index: -1; /* Mantém a camada atrás do conteúdo */
 }
 
+/* Container central que garante espaçamento interno
+   e centralização vertical/horizontal */
 .container {
     display: flex;
     justify-content: center;
@@ -40,6 +51,10 @@ body::before {
     padding: 20px;
 }
 
+/* Caixa principal da calculadora:
+   - Fundo levemente transparente
+   - Borda arredondada
+   - Efeito de sombra e blur para destacar do fundo */
 .calculator-box {
     background: rgba(75, 92, 73, 0.95);
     padding: 40px;
@@ -52,6 +67,9 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Título principal da página (h1):
+   - Fonte maior e em negrito
+   - Texto branco com sombra para dar contraste */
 h1 {
     margin-bottom: 30px;
     font-size: 2.2em;
@@ -60,6 +78,9 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Estrutura do formulário:
+   - Organiza os elementos em coluna
+   - Espaçamento entre campos */
 form {
     display: flex;
     flex-direction: column;
@@ -67,6 +88,8 @@ form {
     margin-bottom: 20px;
 }
 
+/* Estilo para rótulos (labels):
+   - Levemente destacados com sombra no texto */
 label {
     font-size: 1.1em;
     font-weight: 500;
@@ -74,6 +97,9 @@ label {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Campos de entrada (input number):
+   - Estilo limpo, com fundo claro
+   - Transição suave ao interagir */
 input[type="number"] {
     padding: 12px 15px;
     border: none;
@@ -85,16 +111,24 @@ input[type="number"] {
     transition: all 0.3s ease;
 }
 
+/* Destaque ao focar no input:
+   - Fundo branco
+   - Brilho dourado */
 input[type="number"]:focus {
     background: white;
     box-shadow: 0 0 10px rgba(241, 194, 26, 0.5);
     transform: translateY(-2px);
 }
 
+/* Cor mais suave para o placeholder */
 input[type="number"]::placeholder {
     color: #666;
 }
 
+/* Botão principal:
+   - Fundo dourado
+   - Texto em negrito
+   - Efeito de transição */
 button {
     background-color: #f1c21a;
     border: none;
@@ -109,16 +143,23 @@ button {
     letter-spacing: 1px;
 }
 
+/* Efeito hover do botão:
+   - Cor mais intensa
+   - Leve elevação e sombra */
 button:hover {
     background-color: #e6b800;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(241, 194, 26, 0.4);
 }
 
+/* Efeito de clique: volta ao nível original */
 button:active {
     transform: translateY(0);
 }
 
+/* Área de resposta:
+   - Texto maior e em destaque
+   - Espaço reservado mesmo sem resultado */
 #resposta {
     font-size: 1.3em;
     font-weight: bold;
@@ -128,6 +169,10 @@ button:active {
     transition: all 0.3s ease;
 }
 
+/* Logo abaixo da calculadora:
+   - Ajuste de tamanho máximo
+   - Sombra para dar contraste
+   - Leve animação ao passar o mouse */
 .logo {
     max-width: 250px;
     width: 100%;
@@ -141,6 +186,7 @@ button:active {
     transform: scale(1.05);
 }
 
+/* Rodapé fixo centralizado */
 footer {
     position: fixed;
     bottom: 20px;
@@ -149,13 +195,16 @@ footer {
     z-index: 1000;
 }
 
+/* Texto do rodapé:
+   - Cor branca com transparência
+   - Fonte menor e sombra */
 footer p {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9em;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* Responsividade */
+/* Responsividade para tablets */
 @media (max-width: 768px) {
     .calculator-box {
         padding: 30px 20px;
@@ -182,6 +231,7 @@ footer p {
     }
 }
 
+/* Responsividade para celulares */
 @media (max-width: 480px) {
     .calculator-box {
         padding: 25px 15px;
@@ -203,9 +253,3 @@ footer p {
         font-size: 0.8em;
     }
 }
-
-}
-p{
-  text-align: center;
-}
-
