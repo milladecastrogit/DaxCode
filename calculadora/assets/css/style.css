@@ -1,44 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  background-image: url(../images/imagem-fundo.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  padding: 0 24px;
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family:Arial, Helvetica, sans-serif;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0);
+    background-image: url(../images/matrix-background.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
-section{
-background: #4b5c49;
-padding: 8vh;
+
+/* Overlay escuro para melhorar a leitura */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.calculator-box {
+    background: rgba(75, 92, 73, 0.95);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
 }
+
+label {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+input[type="number"] {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    background: white;
+    box-shadow: 0 0 10px rgba(241, 194, 26, 0.5);
+    transform: translateY(-2px);
+}
+
+input[type="number"]::placeholder {
+    color: #666;
+}
+
 button {
-  background-color: #f1c21a;
-  border: none;
-  border-radius: 3px;
-  color: #4b5c49;
-  font-weight: 900;
-  padding: 2px;
+    background-color: #f1c21a;
+    border: none;
+    border-radius: 5px;
+    color: #4b5c49;
+    font-weight: 900;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-h1{
-  margin-top: 0;
-  text-align: center;
+
+button:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241, 194, 26, 0.4);
 }
-img{
-  max-width: 40vw;
-  margin-top: 5vh;
+
+button:active {
+    transform: translateY(0);
+}
+
+#resposta {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px 0;
+    min-height: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.logo {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculator-box {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+    
+    .logo {
+        max-width: 200px;
+        margin-top: 25px;
+    }
+    
+    input[type="number"], button {
+        padding: 10px 12px;
+        font-size: 1em;
+    }
+    
+    #resposta {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-box {
+        padding: 25px 15px;
+    }
+    
+    h1 {
+        font-size: 1.6em;
+    }
+    
+    .logo {
+        max-width: 180px;
+    }
+    
+    footer {
+        bottom: 10px;
+    }
+    
+    footer p {
+        font-size: 0.8em;
+    }
+}
+
 }
 p{
   text-align: center;
 }
+
